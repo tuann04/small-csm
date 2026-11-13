@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "small-csm"
+version = "0.1.0"
+description = "Fast, lightweight Sesame CSM-1B TTS in fp16 with CUDA-graph generation"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "soundfile",
+    "torch",
+    "torchaudio",
+    "transformers",
+    "accelerate",
+]
+
+[project.scripts]
+small-csm = "small_csm.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["small_csm*"]
+
+[tool.setuptools.package-data]
+"small_csm" = ["voices/*", "voices/*/*"]
